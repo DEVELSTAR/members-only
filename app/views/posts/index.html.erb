@@ -1,7 +1,14 @@
 
-<div><% @posts.each do |post| %>
-  <%= post.title %>
-  <%= post.description%><br>
-<% end %></div>
+<% if !user_signed_in? %>
+    <%= link_to 'sign up', new_user_registration_path %><br><br><br><br>
+    <% else %>
+    <%= link_to 'sign out', destroy_user_session_path, data: {turbo_method: :delete } %><br><br><br><br>
+<% end %>
+
+<% @posts.each do |post| %>
+  <%= post.user.username %>
+  <%= post.title %><br>
+  <%= post.description%><br><br><br>
+<% end %>
 
 <%= link_to 'create new post', new_post_path %>
