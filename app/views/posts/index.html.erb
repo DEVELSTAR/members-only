@@ -6,7 +6,7 @@
 <% end %>
 
 <% @posts.each do |post| %>
-  <%= post.user.username %>
+  <%= post.user.username if user_signed_in? %>
   <%= post.title %><br>
   <%= post.description%><br><br><br>
 <% end %>
